@@ -2,6 +2,8 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
 import Galery from "@/components/Galery";
+import Process from "@/components/process";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -15,9 +17,16 @@ export default function Home() {
       {/* About Section */}
       <About />
 
-      {/* Gallery Section */}
+      {/* Gallery Section (Bento Grid) */}
       <Galery />
+
+      {/* Order Workflow / Process Section */}
+      <Process />
+
+      {/* Footer Layout */}
+      <Footer />
     </main>
   );
 }
+
 

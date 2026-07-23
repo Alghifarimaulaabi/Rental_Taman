@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 import { ArrowRight, Sparkles, LayoutGrid } from "lucide-react";
 import { GalleryCard, type GalleryProject } from "./gallery/GalleryCard";
+import Title from "./shared/section-title";
 
 // Bento Grid Gallery Projects Dataset (Exactly 6 items covering required categories)
 const bentoProjects: GalleryProject[] = [
@@ -116,11 +117,6 @@ const Galery = () => {
           variants={headerVariants}
           className="mx-auto max-w-3xl text-center flex flex-col items-center gap-4 mb-14"
         >
-          {/* Section Sub-Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-900/5 px-4 py-1.5 text-xs font-semibold text-emerald-900 border border-emerald-900/10">
-            <LayoutGrid className="h-3.5 w-3.5 text-emerald-700" />
-            <span className="tracking-wide">BENTO GALLERY • PORTFOLIO DEKORASI</span>
-          </div>
 
           {/* Section Title */}
           <h2 className="text-3xl font-extrabold tracking-tight text-emerald-950 sm:text-4xl lg:text-5xl">

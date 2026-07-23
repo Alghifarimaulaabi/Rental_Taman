@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Galery from "@/components/Galery";
+import Footer from "@/components/layout/Footer";
 
 export default function GaleryPage() {
   return (
@@ -8,6 +9,8 @@ export default function GaleryPage() {
       <div className="pt-6">
         <Galery />
       </div>
+      <Footer />
     </main>
   );
 }
+
