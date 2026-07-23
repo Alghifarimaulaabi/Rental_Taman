@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-serif-display), Georgia, serif;
+  --font-sans: var(--font-sans-body), system-ui, sans-serif;
+  --color-emerald-deep: #082216;
+  --color-emerald-dark: #0F3822;
+  --color-emerald-accent: #1C5435;
+  --color-gold-warm: #D4AF37;
+  --color-gold-light: #F4E5B8;
+  --color-nature-bg: #F4F7F4;
+}
+
+@layer utilities {
+  .font-serif-display {
+    font-family: var(--font-serif-display), Georgia, serif;
+  }
+  
+  .font-sans-body {
+    font-family: var(--font-sans-body), system-ui, sans-serif;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-panel-dark {
+    background: rgba(8, 34, 22, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(15, 56, 34, 0.2);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
