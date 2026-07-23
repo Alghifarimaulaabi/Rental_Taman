@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { MapPin, ArrowUpRight, Leaf, Sparkles } from "lucide-react";
 
 export interface GalleryProject {
@@ -35,7 +35,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const badgeStyle = categoryColors[project.category];
 
-  const cardVariants = {
+  const cardVariants : Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
