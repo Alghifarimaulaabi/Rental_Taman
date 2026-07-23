@@ -83,20 +83,16 @@ const Hero = () => {
       <div className="pointer-events-none absolute left-10 bottom-10 -z-10 h-72 w-72 rounded-full bg-amber-200/30 blur-2xl" />
 
       {/* Floating Organic Leaf SVGs */}
-      <motion.div
-        animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      <div
         className="pointer-events-none absolute left-6 top-16 z-0 text-emerald-800/15 hidden lg:block"
       >
         <Leaf className="h-24 w-24 -rotate-12" />
-      </motion.div>
-      <motion.div
-        animate={{ y: [0, 10, 0], rotate: [0, -1.5, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      </div>
+      <div
         className="pointer-events-none absolute right-12 bottom-20 z-0 text-emerald-900/10 hidden lg:block"
       >
         <Flower2 className="h-32 w-32 rotate-45" />
-      </motion.div>
+      </div>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         {/* ================= LEFT COLUMN: TYPOGRAPHY & INTERACTIVE CONTROLS (7 Cols) ================= */}
@@ -106,7 +102,7 @@ const Hero = () => {
           variants={containerVariants}
           className="flex flex-col items-start gap-6 lg:col-span-7"
         >
-          {/* Top Status Pill Badge */}
+          {/* Top Status Pill Badge
           <motion.div variants={fadeUpVariants}>
             <div className="inline-flex items-center gap-2.5 rounded-full glass-panel px-4 py-2 text-xs font-semibold text-emerald-950 shadow-sm ring-1 ring-emerald-900/10 hover:ring-emerald-900/20 transition-all">
               <span className="relative flex h-2 w-2">
@@ -116,7 +112,7 @@ const Hero = () => {
               <Sparkles className="h-3.5 w-3.5 text-emerald-700" />
               <span className="tracking-wide">ALIZA DECORATION • GARDEN RENTAL</span>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Large Typography Headline */}
           <motion.h1
@@ -130,62 +126,6 @@ const Hero = () => {
             untuk Setiap Ruang & Event
           </motion.h1>
 
-          {/* Subtitle / Description */}
-          <motion.p
-            variants={fadeUpVariants}
-            className="max-w-2xl text-base sm:text-lg leading-relaxed text-emerald-900/75 font-normal"
-          >
-            Hadirkan keasrian tanaman hias tropis & dekorasi taman berkelas tanpa beban biaya beli dan ribetnya perawatan. Bebas ganti tanaman kapan saja, 100% dirawat oleh tim ahli botanis kami.
-          </motion.p>
-
-          {/* Interactive Category Selector Tabs */}
-          <motion.div variants={fadeUpVariants} className="w-full pt-1">
-            <div className="flex flex-wrap gap-2 rounded-2xl glass-panel p-1.5 shadow-sm border border-emerald-900/10">
-              {categoryTabs.map((tab) => {
-                const IconComponent = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    type="button"
-                    className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all duration-300 ${
-                      isActive
-                        ? "bg-emerald-900 text-emerald-50 shadow-md shadow-emerald-950/20 scale-[1.02]"
-                        : "text-emerald-900/70 hover:bg-emerald-900/5 hover:text-emerald-950"
-                    }`}
-                  >
-                    <IconComponent className={`h-3.5 w-3.5 ${isActive ? "text-emerald-300" : "text-emerald-700"}`} />
-                    <span>{tab.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Selected Category Feature Card */}
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mt-3 rounded-2xl bg-emerald-900/5 p-4 border border-emerald-900/10 text-xs"
-            >
-              <p className="font-medium text-emerald-950 mb-2.5 flex items-center justify-between">
-                <span>{selectedCategory.desc}</span>
-                <span className="hidden sm:inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-900/10 px-2 py-0.5 rounded-md">
-                  Rekomendasi Terbaik
-                </span>
-              </p>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-emerald-900/90 font-medium">
-                {selectedCategory.perks.map((perk, idx) => (
-                  <div key={idx} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                    <span>{perk}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
 
           {/* Action CTAs & Ratings */}
           <motion.div
@@ -251,7 +191,7 @@ const Hero = () => {
           className="relative lg:col-span-5 flex justify-center items-center"
         >
           {/* Main Visual Frame Wrapper */}
-          <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-[36px] p-3 glass-panel shadow-2xl shadow-emerald-950/15 border border-white/80">
+          <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-[36px] p-3 glass-panel shadow-2xl shadow-emerald-950/15 border border-white/80">
             {/* Inner Image Container */}
             <div className="relative h-full w-full overflow-hidden rounded-[28px]">
               <Image
@@ -279,43 +219,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-
-            {/* FLOATING GLASS CARD 1: Maintenance Guarantee (Top Right) */}
-            <motion.div
-              animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-4 -top-6 z-20 max-w-[210px] rounded-2xl glass-panel p-3.5 shadow-xl shadow-emerald-950/10 border border-white/70 hidden sm:block"
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-900 text-emerald-300 shadow-md">
-                  <ShieldCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-emerald-950">Free Maintenance</h4>
-                  <p className="text-[10px] text-emerald-900/70 leading-snug mt-0.5">
-                    Garansi ganti tanaman & siram rutin oleh botanis
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* FLOATING GLASS CARD 2: Stock Availability (Bottom Left) */}
-            <motion.div
-              animate={{ y: [0, 10, 0], rotate: [0, -1.5, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-6 bottom-16 z-20 max-w-[200px] rounded-2xl glass-panel p-3.5 shadow-xl shadow-emerald-950/10 border border-white/70 hidden sm:block"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-700 border border-amber-500/20">
-                  <Calendar className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-emerald-950">Rental Fleksibel</h4>
-                  <p className="text-[10px] text-emerald-900/70 mt-0.5">Harian, Mingguan, & Tahunan</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
         </motion.div>
       </div>
     </section>

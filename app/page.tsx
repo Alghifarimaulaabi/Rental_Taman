@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
+import Galery from "@/components/Galery";
 
 export default function Home() {
   return (
@@ -13,6 +14,10 @@ export default function Home() {
 
       {/* About Section */}
       <About />
+
+      {/* Gallery Section */}
+      <Galery />
     </main>
   );
 }
+

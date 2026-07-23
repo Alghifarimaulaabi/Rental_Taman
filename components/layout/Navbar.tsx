@@ -17,7 +17,6 @@ const navLinks = [
   { name: "Beranda", href: "#" },
   { name: "Layanan Rental", href: "#layanan" },
   { name: "Koleksi Tanaman", href: "#koleksi" },
-  { name: "Portfolio Event", href: "#portfolio" },
   { name: "Tentang Kami", href: "#tentang" },
 ];
 

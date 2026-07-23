@@ -18,7 +18,7 @@ const About = () => {
             Toko Sepatu Berkualitas
           </h2>
 
-          <p className="text-justify leading-8 text-emerald-900/75">
+          <p className="text-justify leading-8 text-[#2c2c2c]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Exercitationem doloremque, ratione minima voluptas
             repellendus cumque numquam officiis modi assumenda nemo
@@ -26,7 +26,7 @@ const About = () => {
             nostrum tempore vitae.
           </p>
 
-          <p className="text-justify leading-8 text-emerald-900/75">
+          <p className="text-justify leading-8 text-[#2c2c2c]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Laboriosam magni dolorum voluptate quos molestias
             consectetur, dolorem eveniet provident deleniti officiis.
