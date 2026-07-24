@@ -1,0 +1,167 @@
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { ChevronRight, Home, LayoutGrid, ArrowUpRight } from "lucide-react";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ProjectImageGallery from "@/components/project/ProjectImageGallery";
+import ProjectInfo from "@/components/project/ProjectInfo";
+import TestimonialSlider from "@/components/testimonial/TestimonialSlider";
+import { GalleryCard } from "@/components/gallery/GalleryCard";
+import {
+  getProjectById,
+  getAllProjectIds,
+  getRelatedProjects,
+} from "@/lib/data/projects";
+import { getTestimonialsForProject } from "@/lib/data/testimonials";
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export async function generateStaticParams() {
+  const ids = getAllProjectIds();
+  return ids.map((id) => ({ id }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const project = getProjectById(id);
+
+  if (!project) {
+    return {
+      title: "Proyek Tidak Ditemukan | Aliza Decoration",
+      description: "Halaman detail proyek rental taman tidak dapat ditemukan.",
+    };
+  }
+
+  return {
+    title: `${project.title} - Sewa Tanaman ${project.category} | Aliza Decoration`,
+    description: `${project.shortDescription} Lokasi: ${project.location}. Sewa tanaman hias eksklusif & perawatan harian professional.`,
+    openGraph: {
+      title: `${project.title} | Aliza Decoration`,
+      description: project.shortDescription,
+      images: [
+        {
+          url: project.images[0]?.url || "",
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+  };
+}
+
+export default async function ProjectDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const project = getProjectById(id);
+
+  if (!project) {
+    notFound();
+  }
+
+  const testimonials = getTestimonialsForProject(project.id);
+  const relatedProjects = getRelatedProjects(project.id, project.category, 3);
+
+  return (
+    <main className="relative flex min-h-screen flex-col bg-[#F4F7F4] selection:bg-emerald-900 selection:text-white overflow-x-hidden">
+      <Navbar />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 w-full pt-6 pb-20">
+        {/* ================= BREADCRUMB NAVIGATION ================= */}
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-8 flex items-center gap-2 text-xs text-emerald-900/70 overflow-x-auto py-2"
+        >
+          <Link
+            href="/"
+            className="flex items-center gap-1 hover:text-emerald-950 transition-colors shrink-0"
+          >
+            <Home className="h-3.5 w-3.5" />
+            <span>Beranda</span>
+          </Link>
+          <ChevronRight className="h-3 w-3 text-emerald-900/40 shrink-0" />
+          <Link
+            href="/galery"
+            className="flex items-center gap-1 hover:text-emerald-950 transition-colors shrink-0"
+          >
+            <LayoutGrid className="h-3.5 w-3.5" />
+            <span>Galeri Proyek</span>
+          </Link>
+          <ChevronRight className="h-3 w-3 text-emerald-900/40 shrink-0" />
+          <span className="font-semibold text-emerald-950 truncate max-w-[200px] sm:max-w-none">
+            {project.title}
+          </span>
+        </nav>
+
+        {/* ================= MAIN PROJECT DETAIL GRID ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+          {/* Left Column: Image Gallery */}
+          <div className="lg:col-span-7 w-full">
+            <ProjectImageGallery
+              images={project.images}
+              title={project.title}
+              category={project.category}
+              location={project.location}
+              availabilityStatus={project.availabilityStatus}
+            />
+          </div>
+
+          {/* Right Column: Project Information & Actions */}
+          <div className="lg:col-span-5 w-full">
+            <ProjectInfo project={project} />
+          </div>
+        </div>
+
+        {/* ================= CUSTOMER TESTIMONIALS SLIDER SECTION ================= */}
+        <TestimonialSlider testimonials={testimonials} />
+
+        {/* ================= RELATED PROJECTS SECTION ================= */}
+        {relatedProjects.length > 0 && (
+          <section className="mt-16 pt-12 border-t border-emerald-900/10">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold font-serif-display text-emerald-950">
+                  Proyek Serupa Lainnya
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-900/70">
+                  Eksplorasi portfolio dekorasi tanaman kategori {project.category}
+                </p>
+              </div>
+
+              <Link
+                href="/galery"
+                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 transition-colors"
+              >
+                <span>Lihat Semua Proyek</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedProjects.map((relProj, index) => (
+                <GalleryCard
+                  key={relProj.id}
+                  project={{
+                    id: relProj.id,
+                    title: relProj.title,
+                    category: relProj.category,
+                    location: relProj.location,
+                    description: relProj.shortDescription,
+                    imageUrl: relProj.images[0].url,
+                    imageAlt: relProj.images[0].alt,
+                    bentoClass: "min-h-[300px]",
+                  }}
+                  index={index}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <Footer />
+    </main>
+  );
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "motion/react";
 import { MapPin, ArrowUpRight, Leaf, Sparkles } from "lucide-react";
 
@@ -35,7 +36,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const badgeStyle = categoryColors[project.category];
 
-  const cardVariants : Variants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -53,8 +54,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
       variants={cardVariants}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)}
-      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl bg-emerald-950/20 shadow-md shadow-emerald-950/5 ring-1 ring-emerald-900/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-950/20 cursor-pointer focus-within:ring-2 focus-within:ring-emerald-700 outline-none ${project.bentoClass}`}
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl bg-emerald-950/20 shadow-md shadow-emerald-950/5 ring-1 ring-emerald-900/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-950/20 focus-within:ring-2 focus-within:ring-emerald-700 outline-none ${project.bentoClass}`}
       tabIndex={0}
       aria-label={`Proyek ${project.title} - ${project.category} di ${project.location}`}
     >
@@ -71,7 +71,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
       <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/30 to-black/10 transition-opacity duration-300" />
 
       {/* Top Floating Badges */}
-      <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between gap-2">
+      <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between gap-2 pointer-events-none">
         <div className="flex items-center gap-2">
           {/* Category Badge */}
           <span
@@ -98,7 +98,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
       </div>
 
       {/* Always Visible Content at Bottom */}
-      <div className="relative z-10 p-5 sm:p-6 transition-all duration-300">
+      <div className="relative z-10 p-5 sm:p-6 transition-all duration-300 pointer-events-none">
         <h3
           className={`font-serif-display font-bold tracking-tight text-white ${
             project.isFeatured ? "text-xl sm:text-2xl lg:text-3xl" : "text-base sm:text-lg"
@@ -114,7 +114,7 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
       {/* Animated Slide-Up Overlay on Hover / Touch */}
       <div
         className={`absolute inset-0 z-20 flex flex-col justify-end p-5 sm:p-6 bg-gradient-to-t from-emerald-950/95 via-emerald-950/85 to-emerald-950/40 backdrop-blur-[6px] transition-all duration-300 ease-in-out ${
-          isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+          isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
         }`}
       >
         <div className="flex flex-col gap-3 text-white">
@@ -141,13 +141,13 @@ export const GalleryCard = ({ project, index }: GalleryCardProps) => {
           </p>
 
           <div className="pt-2">
-            <button
-              type="button"
+            <Link
+              href={`/proyek/${project.id}`}
               className="inline-flex items-center gap-2 rounded-xl bg-emerald-500/25 px-4 py-2 text-xs font-semibold text-emerald-200 border border-emerald-400/30 hover:bg-emerald-500/40 hover:text-white transition-all group/btn"
             >
               <span>Detail Proyek</span>
               <ArrowUpRight className="h-3.5 w-3.5 text-emerald-300 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
