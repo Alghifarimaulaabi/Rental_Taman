@@ -1,80 +1,15 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { motion, type Variants } from "motion/react";
 import {
   Sparkles,
   ArrowRight,
-  ShieldCheck,
   Sprout,
   Star,
-  CheckCircle2,
-  Calendar,
-  Building2,
-  PartyPopper,
-  Home,
-  UtensilsCrossed,
+  ChevronRight,
   Leaf,
   Flower2,
-  ChevronRight,
 } from "lucide-react";
 
-const categoryTabs = [
-  {
-    id: "corporate",
-    label: "Corporate & Kantor",
-    icon: Building2,
-    desc: "Sewa tanaman hias indoor berkala untuk meningkatkan estetika & produktivitas kantor.",
-    perks: ["Rotasi Tanaman Bulanan", "Perawatan Harian Gratis", "Pot Eksklusif Minimalis"],
-  },
-  {
-    id: "wedding",
-    label: "Pernikahan & Event",
-    icon: PartyPopper,
-    desc: "Konsep taman lanskap temporer yang megah & instagrammable untuk hari bahagia Anda.",
-    perks: ["Instalasi H-1 Event", "Tim Design Standby", "Bunga & Tanaman Fresh"],
-  },
-  {
-    id: "residence",
-    label: "Residensi Mewah",
-    icon: Home,
-    desc: "Sentuhan tropis elegan untuk vila, penthouse, dan rumah tinggal kelas atas.",
-    perks: ["Konsultasi Fengshui & Layout", "Garansi Ganti Baru", "Bebas Repot Hama"],
-  },
-  {
-    id: "hospitality",
-    label: "Hotel & Resto",
-    icon: UtensilsCrossed,
-    desc: "Suasana alam yang menenangkan untuk memanjakan setiap tamu restaurant & hotel.",
-    perks: ["Skema Rental Fleksibel", "Maintenance Hening", "Tanaman Tropis & Impor"],
-  },
-];
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 const Hero = () => {
-  const [activeTab, setActiveTab] = useState("corporate");
-  const selectedCategory = categoryTabs.find((tab) => tab.id === activeTab)!;
-
   return (
     <section className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden px-4 py-8 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-center">
       {/* Background Decorative Ambient Blobs & Organic Shapes */}
@@ -96,41 +31,24 @@ const Hero = () => {
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         {/* ================= LEFT COLUMN: TYPOGRAPHY & INTERACTIVE CONTROLS (7 Cols) ================= */}
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={containerVariants}
-          className="flex flex-col items-start gap-6 lg:col-span-7"
-        >
-          {/* Top Status Pill Badge
-          <motion.div variants={fadeUpVariants}>
-            <div className="inline-flex items-center gap-2.5 rounded-full glass-panel px-4 py-2 text-xs font-semibold text-emerald-950 shadow-sm ring-1 ring-emerald-900/10 hover:ring-emerald-900/20 transition-all">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600"></span>
-              </span>
-              <Sparkles className="h-3.5 w-3.5 text-emerald-700" />
-              <span className="tracking-wide">ALIZA DECORATION • GARDEN RENTAL</span>
-            </div>
-          </motion.div> */}
+        <div className="flex flex-col items-start gap-6 lg:col-span-7">
 
-          {/* Large Typography Headline */}
-          <motion.h1
-            variants={fadeUpVariants}
-            className="text-4xl font-extrabold tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl xl:text-[3.65rem] leading-[1.12]"
+          {/* Large Typography Headline — staggered CSS animation */}
+          <h1
+            className="text-4xl font-extrabold tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl xl:text-[3.65rem] leading-[1.12] animate-fade-up"
           >
             Sentuhan{" "}
             <span className="relative inline-block font-serif-display italic font-normal text-emerald-800 underline decoration-emerald-400/40 underline-offset-8">
               Kemewahan Alam
             </span>{" "}
             untuk Setiap Ruang & Event
-          </motion.h1>
+          </h1>
 
 
           {/* Action CTAs & Ratings */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 w-full sm:w-auto"
+          <div
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 w-full sm:w-auto animate-fade-up"
+            style={{ animationDelay: "120ms" }}
           >
             {/* Primary CTA */}
             <a
@@ -153,12 +71,12 @@ const Hero = () => {
               <span>Lihat Katalog 2026</span>
               <ChevronRight className="h-4 w-4 text-emerald-700 transition-transform group-hover:translate-x-0.5" />
             </button>
-          </motion.div>
+          </div>
 
           {/* Trust Social Proof */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="flex items-center gap-4 pt-2 text-xs text-emerald-900/80 border-t border-emerald-900/10 w-full"
+          <div
+            className="flex items-center gap-4 pt-2 text-xs text-emerald-900/80 border-t border-emerald-900/10 w-full animate-fade-up"
+            style={{ animationDelay: "240ms" }}
           >
             <div className="flex -space-x-2">
               <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-emerald-800 text-white font-bold text-center leading-8 text-xs">
@@ -180,15 +98,12 @@ const Hero = () => {
               </div>
               <p className="text-[11px] text-emerald-900/70">Dipercaya 500+ Klien Event, Perusahaan, & Hunian</p>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* ================= RIGHT COLUMN: HERO SHOWCASE VISUALS & GLASS CARDS (5 Cols) ================= */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative lg:col-span-5 flex justify-center items-center"
+        <div
+          className="relative lg:col-span-5 flex justify-center items-center animate-scale-in"
         >
           {/* Main Visual Frame Wrapper */}
           <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-[36px] p-3 glass-panel shadow-2xl shadow-emerald-950/15 border border-white/80">
@@ -220,7 +135,7 @@ const Hero = () => {
               </div>
             </div>
             </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,13 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
-import Galery from "@/components/Galery";
-import Process from "@/components/process";
-import Footer from "@/components/layout/Footer";
+
+// Code-split komponen below-the-fold untuk mengurangi initial JS bundle
+// SSR tetap aktif agar SEO terjaga (HTML di-render server-side, JS chunk terpisah)
+const Galery = dynamic(() => import("@/components/Galery"), { ssr: true });
+const Process = dynamic(() => import("@/components/process"), { ssr: true });
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 
 export default function Home() {
   return (
@@ -17,16 +21,14 @@ export default function Home() {
       {/* About Section */}
       <About />
 
-      {/* Gallery Section (Bento Grid) */}
+      {/* Gallery Section (Bento Grid) — lazy loaded */}
       <Galery />
 
-      {/* Order Workflow / Process Section */}
+      {/* Order Workflow / Process Section — lazy loaded */}
       <Process />
 
-      {/* Footer Layout */}
+      {/* Footer Layout — lazy loaded */}
       <Footer />
     </main>
   );
 }
-
-

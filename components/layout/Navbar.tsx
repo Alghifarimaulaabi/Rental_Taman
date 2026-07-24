@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
 import {
   Leaf,
   Search,
@@ -146,69 +145,65 @@ const Navbar = () => {
               />
             </button>
 
-            {/* Desktop Dropdown Menu Panel */}
-            <AnimatePresence>
-              {servicesDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
-                  className="absolute left-0 top-full mt-2 w-80 sm:w-96 rounded-2xl bg-white/95 backdrop-blur-xl p-3 shadow-2xl shadow-emerald-950/15 ring-1 ring-emerald-900/10 border border-emerald-900/10 z-50 overflow-hidden"
-                >
-                  <div className="mb-2 px-3 pt-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-                      Layanan Rental & Dekorasi
-                    </span>
-                  </div>
+            {/* Desktop Dropdown Menu Panel — CSS transition replaces motion.div */}
+            <div
+              onMouseLeave={() => setServicesDropdownOpen(false)}
+              className={`absolute left-0 top-full mt-2 w-80 sm:w-96 rounded-2xl bg-white/95 backdrop-blur-xl p-3 shadow-2xl shadow-emerald-950/15 ring-1 ring-emerald-900/10 border border-emerald-900/10 z-50 overflow-hidden transition-all duration-200 ease-out origin-top ${
+                servicesDropdownOpen
+                  ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 scale-96 translate-y-2 pointer-events-none"
+              }`}
+            >
+              <div className="mb-2 px-3 pt-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
+                  Layanan Rental & Dekorasi
+                </span>
+              </div>
 
-                  <div className="flex flex-col gap-1">
-                    {serviceItems.map((item, idx) => {
-                      const IconComponent = item.icon;
-                      if (item.isAll) {
-                        return (
-                          <div key={idx} className="mt-1 pt-1.5 border-t border-emerald-900/10">
-                            <Link
-                              href={item.href}
-                              onClick={() => setServicesDropdownOpen(false)}
-                              className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-emerald-900 to-emerald-950 px-4 py-3 text-xs font-semibold text-white shadow-md hover:shadow-lg transition-all"
-                            >
-                              <span className="flex items-center gap-2">
-                                <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
-                                {item.name}
-                              </span>
-                              <ArrowRight className="h-4 w-4 text-emerald-300 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                          </div>
-                        );
-                      }
-
-                      return (
+              <div className="flex flex-col gap-1">
+                {serviceItems.map((item, idx) => {
+                  const IconComponent = item.icon;
+                  if (item.isAll) {
+                    return (
+                      <div key={idx} className="mt-1 pt-1.5 border-t border-emerald-900/10">
                         <Link
-                          key={idx}
                           href={item.href}
                           onClick={() => setServicesDropdownOpen(false)}
-                          className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-emerald-900/5"
+                          className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-emerald-900 to-emerald-950 px-4 py-3 text-xs font-semibold text-white shadow-md hover:shadow-lg transition-all"
                         >
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-900/10 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-emerald-300 transition-colors">
-                            <IconComponent className="h-4 w-4" />
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-xs font-bold text-emerald-950 group-hover:text-emerald-800 transition-colors">
-                              {item.name}
-                            </span>
-                            <span className="text-[11px] text-emerald-900/60 leading-tight">
-                              {item.description}
-                            </span>
-                          </div>
+                          <span className="flex items-center gap-2">
+                            <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
+                            {item.name}
+                          </span>
+                          <ArrowRight className="h-4 w-4 text-emerald-300 transition-transform group-hover:translate-x-1" />
                         </Link>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={idx}
+                      href={item.href}
+                      onClick={() => setServicesDropdownOpen(false)}
+                      className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-emerald-900/5"
+                    >
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-900/10 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-emerald-300 transition-colors">
+                        <IconComponent className="h-4 w-4" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xs font-bold text-emerald-950 group-hover:text-emerald-800 transition-colors">
+                          {item.name}
+                        </span>
+                        <span className="text-[11px] text-emerald-900/60 leading-tight">
+                          {item.description}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Link: Koleksi Tanaman */}
@@ -258,7 +253,7 @@ const Navbar = () => {
             type="button"
             className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-900 via-emerald-850 to-emerald-950 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-950/20 hover:shadow-lg hover:shadow-emerald-950/30 transition-all active:scale-95"
           >
-            <Sparkles className="h-3.5 w-3.5 text-emerald-300 animate-pulse" />
+            <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
             <span>Sewa</span>
             <ArrowUpRight className="h-3.5 w-3.5 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
@@ -277,102 +272,98 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-2 overflow-hidden rounded-2xl glass-panel p-5 shadow-xl md:hidden"
+      {/* Mobile Drawer Menu — CSS transition replaces AnimatePresence + motion.div */}
+      <div
+        className={`mt-2 overflow-hidden rounded-2xl glass-panel shadow-xl md:hidden transition-all duration-300 ease-out ${
+          mobileMenuOpen
+            ? "max-h-[600px] opacity-100 p-5"
+            : "max-h-0 opacity-0 p-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col gap-3">
+          <div className="relative mb-2">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-700/60" />
+            <input
+              type="text"
+              placeholder="Cari tanaman atau paket sewa..."
+              className="w-full rounded-xl bg-emerald-900/5 py-2.5 pl-9 pr-4 text-xs outline-none ring-1 ring-emerald-900/10"
+            />
+          </div>
+
+          {/* Beranda */}
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
           >
-            <div className="flex flex-col gap-3">
-              <div className="relative mb-2">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-700/60" />
-                <input
-                  type="text"
-                  placeholder="Cari tanaman atau paket sewa..."
-                  className="w-full rounded-xl bg-emerald-900/5 py-2.5 pl-9 pr-4 text-xs outline-none ring-1 ring-emerald-900/10"
-                />
-              </div>
+            Beranda
+          </Link>
 
-              {/* Beranda */}
-              <Link
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
-              >
-                Beranda
-              </Link>
+          {/* Mobile Layanan Kami Submenu Accordion */}
+          <div>
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
+            >
+              <span>Layanan Kami</span>
+              <ChevronDown
+                className={`h-4 w-4 text-emerald-700 transition-transform ${
+                  mobileServicesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-              {/* Mobile Layanan Kami Submenu Accordion */}
-              <div>
-                <button
-                  type="button"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
-                >
-                  <span>Layanan Kami</span>
-                  <ChevronDown
-                    className={`h-4 w-4 text-emerald-700 transition-transform ${
-                      mobileServicesOpen ? "rotate-180" : ""
+            {mobileServicesOpen && (
+              <div className="mt-1 ml-3 flex flex-col gap-1.5 border-l-2 border-emerald-900/10 pl-3 py-1">
+                {serviceItems.map((item, sIdx) => (
+                  <Link
+                    key={sIdx}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-xs font-medium transition-colors ${
+                      item.isAll
+                        ? "font-bold text-emerald-800 flex items-center gap-1 mt-1"
+                        : "text-emerald-900/80 hover:text-emerald-950"
                     }`}
-                  />
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="mt-1 ml-3 flex flex-col gap-1.5 border-l-2 border-emerald-900/10 pl-3 py-1">
-                    {serviceItems.map((item, sIdx) => (
-                      <Link
-                        key={sIdx}
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`text-xs font-medium transition-colors ${
-                          item.isAll
-                            ? "font-bold text-emerald-800 flex items-center gap-1 mt-1"
-                            : "text-emerald-900/80 hover:text-emerald-950"
-                        }`}
-                      >
-                        <span>{item.name}</span>
-                        {item.isAll && <ArrowRight className="h-3 w-3" />}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                  >
+                    <span>{item.name}</span>
+                    {item.isAll && <ArrowRight className="h-3 w-3" />}
+                  </Link>
+                ))}
               </div>
+            )}
+          </div>
 
-              {/* Koleksi Tanaman */}
-              <Link
-                href="/catalog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
-              >
-                Koleksi Tanaman
-              </Link>
+          {/* Koleksi Tanaman */}
+          <Link
+            href="/catalog"
+            onClick={() => setMobileMenuOpen(false)}
+            className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
+          >
+            Koleksi Tanaman
+          </Link>
 
-              {/* Tentang Kami */}
-              <Link
-                href="#tentang"
-                onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
-              >
-                Tentang Kami
-              </Link>
+          {/* Tentang Kami */}
+          <Link
+            href="#tentang"
+            onClick={() => setMobileMenuOpen(false)}
+            className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
+          >
+            Tentang Kami
+          </Link>
 
-              <div className="mt-3 flex flex-col gap-2 border-t border-emerald-900/10 pt-3">
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-900 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-950/20"
-                >
-                  <Sparkles className="h-4 w-4 text-emerald-300" />
-                  <span>Sewa Tanaman Now</span>
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div className="mt-3 flex flex-col gap-2 border-t border-emerald-900/10 pt-3">
+            <button
+              type="button"
+              className="flex items-center justify-center gap-2 rounded-xl bg-emerald-900 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-950/20"
+            >
+              <Sparkles className="h-4 w-4 text-emerald-300" />
+              <span>Sewa Tanaman Now</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };

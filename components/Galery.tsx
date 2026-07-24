@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { motion, type Variants } from "motion/react";
-import { ArrowRight, Sparkles, LayoutGrid } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { GalleryCard, type GalleryProject } from "./gallery/GalleryCard";
-import Title from "./shared/section-title";
 
 // Bento Grid Gallery Projects Dataset (Exactly 6 items covering required categories)
 const bentoProjects: GalleryProject[] = [
@@ -83,25 +79,6 @@ const bentoProjects: GalleryProject[] = [
   },
 ];
 
-const headerVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const gridContainerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
 const Galery = () => {
   return (
     <section className="relative w-full py-20 px-4 sm:px-8 lg:px-12 xl:px-16 bg-[#F4F7F4] overflow-hidden">
@@ -110,14 +87,7 @@ const Galery = () => {
 
       <div className="mx-auto max-w-7xl">
         {/* ================= SECTION HEADER ================= */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={headerVariants}
-          className="mx-auto max-w-3xl text-center flex flex-col items-center gap-4 mb-14"
-        >
-
+        <div className="mx-auto max-w-3xl text-center flex flex-col items-center gap-4 mb-14 animate-fade-up">
           {/* Section Title */}
           <h2 className="text-3xl font-extrabold tracking-tight text-emerald-950 sm:text-4xl lg:text-5xl">
             Galeri <span className="font-serif-display italic font-normal text-emerald-800">Proyek</span>
@@ -127,39 +97,30 @@ const Galery = () => {
           <p className="text-base sm:text-lg leading-relaxed text-emerald-900/70 max-w-2xl font-normal">
             Lihat berbagai proyek dekorasi tanaman yang telah kami kerjakan untuk kantor, hotel, restoran, wedding, dan berbagai event lainnya.
           </p>
-        </motion.div>
+        </div>
 
         {/* ================= BENTO GRID CONTAINER ================= */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={gridContainerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-6 mb-3"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-6 mb-3">
           {bentoProjects.map((project, index) => (
             <GalleryCard key={project.id} project={project} index={index} />
           ))}
-        </motion.div>
+        </div>
 
         {/* ================= CENTERED ACTION BUTTON ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-14 flex justify-center"
+        <div
+          className="mt-14 flex justify-center animate-fade-up"
+          style={{ animationDelay: "400ms" }}
         >
           <Link
             href="/galery"
             className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-emerald-900 via-emerald-850 to-emerald-950 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-emerald-950/20 transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-emerald-950/35 active:scale-95"
           >
             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <Sparkles className="h-4 w-4 text-emerald-300 animate-pulse" />
+            <Sparkles className="h-4 w-4 text-emerald-300" />
             <span>Lihat Lebih Banyak</span>
             <ArrowRight className="h-4 w-4 text-emerald-300 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

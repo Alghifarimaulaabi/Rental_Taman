@@ -40,6 +40,8 @@ const About = () => {
             alt="Gedung"
             width={550}
             height={200}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
+            loading="lazy"
             className="rounded-2xl object-cover shadow-xl"
           />
         </div>

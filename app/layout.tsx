@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   // Kata Kunci SEO
   keywords: [
     "sewa tanaman",
-    "rental tanaman jakarta",
+    "rental tanaman bandung",
     "dekorasi taman kantor",
     "sewa tanaman indoor",
     "botanical landscape",
