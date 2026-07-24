@@ -1,13 +1,10 @@
-import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/hero";
 import About from "@/components/about";
 
-// Code-split komponen below-the-fold untuk mengurangi initial JS bundle
-// SSR tetap aktif agar SEO terjaga (HTML di-render server-side, JS chunk terpisah)
-const Galery = dynamic(() => import("@/components/Galery"), { ssr: true });
-const Process = dynamic(() => import("@/components/process"), { ssr: true });
-const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
+import Galery from "@/components/Galery";
+import Process from "@/components/process";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (

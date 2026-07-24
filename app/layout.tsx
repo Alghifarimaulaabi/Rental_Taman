@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 // Domain placeholder sesuai instruksi (dapat diubah via variabel lingkungan NEXT_PUBLIC_SITE_URL)
@@ -58,6 +59,11 @@ export const metadata: Metadata = {
     canonical: "./",
   },
 
+  // Verifikasi Webmaster
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+  },
+
   // Pengaturan Indeks Mesin Pencari (Robots)
   robots: {
     index: true,
@@ -113,13 +119,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Aliza Decoration",
+    "image": `${baseUrl}/assets/Images/hero-tanaman.jpg`,
+    "description": "Layanan sewa tanaman hias, dekorasi taman, dan konsep lanskap botanical mewah untuk pernikahan, event corporate, kantor, & hunian eksklusif.",
+    "url": baseUrl,
+    "telephone": "+6283830104299",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Barunagri",
+      "addressLocality": "Bandung",
+      "addressRegion": "Jawa Barat",
+      "addressCountry": "ID"
+    }
+  };
+
   return (
     <html
       lang="id"
       className={`${playfair.variable} ${jakarta.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#F6F8F5] text-emerald-950 font-sans selection:bg-emerald-800 selection:text-emerald-50">
         {children}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
