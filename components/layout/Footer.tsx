@@ -7,7 +7,7 @@ const socialLinks = [
   {
     initial: "WA",
     name: "WhatsApp",
-    href: "https://wa.me/6281234567890",
+    href: "https://wa.me/6283830104299",
     ariaLabel: "WhatsApp Aliza Decoration",
     bgHover: "hover:bg-emerald-600 hover:text-white",
   },

@@ -31,7 +31,7 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
   const waText = encodeURIComponent(
     `Halo Aliza Decoration, saya ingin berkonsultasi mengenai proyek "${project.title}" (ID: ${project.id}) - ${project.category} di ${project.location}. Bisakah dibantu untuk penawaran harga & jadwal survei lokasi?`
   );
-  const waUrl = `https://wa.me/6281234567890?text=${waText}`;
+  const waUrl = `https://wa.me/6283830104299?text=${waText}`;
 
   const handleShare = () => {
     if (navigator.clipboard) {

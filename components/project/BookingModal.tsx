@@ -44,7 +44,7 @@ export default function BookingModal({ isOpen, onClose, project }: BookingModalP
 Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
 
     const encodedText = encodeURIComponent(text);
-    const waUrl = `https://wa.me/6281234567890?text=${encodedText}`;
+    const waUrl = `https://wa.me/6283830104299?text=${encodedText}`;
 
     // Open WhatsApp in new tab after a brief feedback delay
     setTimeout(() => {
