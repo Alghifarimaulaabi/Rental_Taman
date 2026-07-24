@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronRight, Home, LayoutGrid, ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import ProjectImageGallery from "@/components/project/ProjectImageGallery";
 import ProjectInfo from "@/components/project/ProjectInfo";
 import TestimonialSlider from "@/components/testimonial/TestimonialSlider";
@@ -95,30 +96,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 w-full pt-6 pb-20">
         {/* ================= BREADCRUMB NAVIGATION ================= */}
-        <nav
-          aria-label="Breadcrumb"
-          className="mb-8 flex items-center gap-2 text-xs text-emerald-900/70 overflow-x-auto py-2"
-        >
-          <Link
-            href="/"
-            className="flex items-center gap-1 hover:text-emerald-950 transition-colors shrink-0"
-          >
-            <Home className="h-3.5 w-3.5" />
-            <span>Beranda</span>
-          </Link>
-          <ChevronRight className="h-3 w-3 text-emerald-900/40 shrink-0" />
-          <Link
-            href="/galery"
-            className="flex items-center gap-1 hover:text-emerald-950 transition-colors shrink-0"
-          >
-            <LayoutGrid className="h-3.5 w-3.5" />
-            <span>Galeri Proyek</span>
-          </Link>
-          <ChevronRight className="h-3 w-3 text-emerald-900/40 shrink-0" />
-          <span className="font-semibold text-emerald-950 truncate max-w-[200px] sm:max-w-none">
-            {project.title}
-          </span>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: "Beranda", href: "/", iconName: "home" },
+            { label: "Galeri Proyek", href: "/galery", iconName: "gallery" },
+            { label: project.title },
+          ]}
+          className="mb-8"
+        />
 
         {/* ================= MAIN PROJECT DETAIL GRID ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">

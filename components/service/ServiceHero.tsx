@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import { Service } from "@/lib/types/service";
-import { Sparkles, ArrowRight, PhoneCall, CheckCircle2, Sprout } from "lucide-react";
+import { Sparkles, ArrowRight, PhoneCall, CheckCircle2, Sprout, Home } from "lucide-react";
 
 interface ServiceHeroProps {
   service: Service;
@@ -16,19 +17,14 @@ export default function ServiceHero({ service }: ServiceHeroProps) {
 
       <div className="mx-auto max-w-7xl">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-medium text-emerald-900/70">
-          <Link href="/" className="hover:text-emerald-950 transition-colors">
-            Beranda
-          </Link>
-          <span>/</span>
-          <Link href="/layanan" className="hover:text-emerald-950 transition-colors">
-            Layanan Kami
-          </Link>
-          <span>/</span>
-          <span className="font-semibold text-emerald-950 truncate max-w-[200px] sm:max-w-none">
-            {service.title}
-          </span>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: "Beranda", href: "/", iconName: "home" },
+            { label: "Layanan Kami", href: "/layanan", iconName: "service" },
+            { label: service.title },
+          ]}
+          className="mb-6"
+        />
 
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           {/* Left Column: Information & CTAs */}

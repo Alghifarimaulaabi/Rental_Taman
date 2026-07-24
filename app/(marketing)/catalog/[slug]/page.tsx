@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PlantCard from "@/components/catalog/PlantCard";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import { plantsData } from "@/lib/data/plants";
 import {
   ChevronRight,
@@ -21,6 +22,8 @@ import {
   Ruler,
   Droplets,
   Container,
+  Home,
+  Sprout,
 } from "lucide-react";
 import PlantDetailClient from "./PlantDetailClient";
 
@@ -122,22 +125,14 @@ export default async function PlantDetailPage({ params }: PlantDetailPageProps) 
       <main className="flex-1 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb Navigation */}
-          <nav
-            aria-label="Breadcrumb"
-            className="flex items-center gap-2 text-xs font-semibold text-emerald-900/60 mb-6 sm:mb-8 flex-wrap"
-          >
-            <Link href="/" className="hover:text-emerald-950 transition-colors">
-              Beranda
-            </Link>
-            <ChevronRight className="h-3.5 w-3.5 text-emerald-700/50" />
-            <Link href="/catalog" className="hover:text-emerald-950 transition-colors">
-              Koleksi Tanaman
-            </Link>
-            <ChevronRight className="h-3.5 w-3.5 text-emerald-700/50" />
-            <span className="text-emerald-950 font-bold truncate max-w-[200px] sm:max-w-none">
-              {plant.name}
-            </span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: "Beranda", href: "/", iconName: "home" },
+              { label: "Koleksi Tanaman", href: "/catalog", iconName: "catalog" },
+              { label: plant.name },
+            ]}
+            className="mb-6 sm:mb-8"
+          />
 
           {/* Back to Catalog Link */}
           <div className="mb-6">

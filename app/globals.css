@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+*{
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @theme {
   --font-serif: var(--font-serif-display), Georgia, serif;
   --font-sans: var(--font-sans-body), system-ui, sans-serif;
