@@ -143,17 +143,17 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-xs text-emerald-100/70 font-normal">
               <div className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Jl. Botanical Garden No. 88, Jakarta Selatan, Indonesia</span>
+                <span>Jl. Barunagri Desa Sukajaya, Kecamatan Lembang, Kabupaten Bandung Barat</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="flex h-5 w-5 items-center justify-center rounded-md bg-emerald-800 text-[10px] font-black text-emerald-300 shrink-0">
                   WA
                 </span>
-                <span>+62 812-3456-7890 (WhatsApp Available)</span>
+                <span>+62 83830104299 (WhatsApp Available)</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>halo@alizadecoration.com</span>
+                <span>alizagarden@gmail.com</span>
               </div>
             </div>
           </div>
