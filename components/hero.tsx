@@ -134,7 +134,7 @@ const Hero = () => {
           >
             {/* Primary CTA */}
             <a
-              href="https://wa.me/"
+              href="https://wa.me/+6283830104299"
               target="_blank"
               rel="noreferrer"
               className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-900 via-emerald-850 to-emerald-950 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-emerald-950/25 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-950/40 active:scale-95"

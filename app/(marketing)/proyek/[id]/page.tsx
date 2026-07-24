@@ -24,6 +24,8 @@ export async function generateStaticParams() {
   return ids.map((id) => ({ id }));
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const project = getProjectById(id);
@@ -35,20 +37,43 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const imageUrl = project.images[0]?.url || `${baseUrl}/assets/Images/hero-tanaman.jpg`;
+  const canonicalUrl = `${baseUrl}/proyek/${project.id}`;
+
   return {
-    title: `${project.title} - Sewa Tanaman ${project.category} | Aliza Decoration`,
-    description: `${project.shortDescription} Lokasi: ${project.location}. Sewa tanaman hias eksklusif & perawatan harian professional.`,
+    title: `${project.title} - Sewa Tanaman ${project.category}`,
+    description: `${project.shortDescription} Lokasi: ${project.location}. Sewa tanaman hias eksklusif & perawatan harian profesional.`,
+    keywords: [
+      project.title,
+      `dekorasi taman ${project.category.toLowerCase()}`,
+      `rental tanaman ${project.location.toLowerCase()}`,
+      "portofolio aliza decoration",
+      "instalasi tanaman biofilik",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${project.title} | Aliza Decoration`,
       description: project.shortDescription,
+      url: canonicalUrl,
+      siteName: "Aliza Decoration",
+      locale: "id_ID",
+      type: "article",
       images: [
         {
-          url: project.images[0]?.url || "",
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: project.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Aliza Decoration`,
+      description: project.shortDescription,
+      images: [imageUrl],
     },
   };
 }

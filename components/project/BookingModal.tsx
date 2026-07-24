@@ -126,7 +126,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {/* Form Field: Nama Lengkap */}
                 <div>
-                  <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                  <label className=" text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                     <User className="h-3.5 w-3.5 text-emerald-700" />
                     Nama Lengkap <span className="text-rose-500">*</span>
                   </label>
@@ -143,7 +143,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
                 {/* Form Field: WhatsApp & Email Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                    <label className=" text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                       <Phone className="h-3.5 w-3.5 text-emerald-700" />
                       Nomor WhatsApp <span className="text-rose-500">*</span>
                     </label>
@@ -158,7 +158,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                    <label className=" text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                       <Mail className="h-3.5 w-3.5 text-emerald-700" />
                       Email (Opsional)
                     </label>
@@ -175,7 +175,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
                 {/* Form Field: Date & Duration Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                    <label className=" text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                       <Calendar className="h-3.5 w-3.5 text-emerald-700" />
                       Rencana Tanggal Sewa
                     </label>
@@ -188,7 +188,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                    <label className=" text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                       <Clock className="h-3.5 w-3.5 text-emerald-700" />
                       Estimasi Durasi Sewa
                     </label>
@@ -208,7 +208,7 @@ Mohon informasi ketersediaan jadwal dan prosedur selanjutnya. Terima kasih!`;
 
                 {/* Form Field: Notes */}
                 <div>
-                  <label className="block text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
+                  <label className="text-xs font-semibold text-emerald-950 mb-1.5 flex items-center gap-1.5">
                     <MessageSquare className="h-3.5 w-3.5 text-emerald-700" />
                     Catatan Khusus / Kebutuhan Tambahan
                   </label>

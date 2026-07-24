@@ -213,7 +213,7 @@ const Navbar = () => {
 
           {/* Link: Koleksi Tanaman */}
           <Link
-            href="#koleksi"
+            href="/catalog"
             className="rounded-lg px-3.5 py-2 text-sm font-medium text-emerald-900/80 transition-colors hover:text-emerald-950 hover:bg-emerald-900/5"
           >
             Koleksi Tanaman
@@ -259,7 +259,7 @@ const Navbar = () => {
             className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-900 via-emerald-850 to-emerald-950 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-950/20 hover:shadow-lg hover:shadow-emerald-950/30 transition-all active:scale-95"
           >
             <Sparkles className="h-3.5 w-3.5 text-emerald-300 animate-pulse" />
-            <span>Sewa Now</span>
+            <span>Sewa</span>
             <ArrowUpRight className="h-3.5 w-3.5 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
@@ -344,7 +344,7 @@ const Navbar = () => {
 
               {/* Koleksi Tanaman */}
               <Link
-                href="#koleksi"
+                href="/catalog"
                 onClick={() => setMobileMenuOpen(false)}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-900/5 transition-colors"
               >

@@ -97,7 +97,7 @@ const Footer = () => {
             </h4>
             <ul className="flex flex-col gap-2.5 text-xs text-emerald-100/70 font-medium">
               <li>
-                <Link href="#" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
+                <Link href="/" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
                   <ArrowUpRight className="h-3 w-3 text-emerald-400" />
                   <span>Beranda</span>
                 </Link>
@@ -109,7 +109,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#layanan" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
+                <Link href="/catalog" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5 font-bold text-amber-300">
+                  <ArrowUpRight className="h-3 w-3 text-amber-400" />
+                  <span>Koleksi Tanaman</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
                   <ArrowUpRight className="h-3 w-3 text-emerald-400" />
                   <span>Layanan Rental Tanaman</span>
                 </Link>
@@ -117,7 +123,7 @@ const Footer = () => {
               <li>
                 <Link href="#galeri" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
                   <ArrowUpRight className="h-3 w-3 text-emerald-400" />
-                  <span>Galeri Proyek (Bento)</span>
+                  <span>Galeri Proyek</span>
                 </Link>
               </li>
               <li>
