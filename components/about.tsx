@@ -4,7 +4,7 @@ import Title from "@/components/shared/section-title";
 const About = () => {
   return (
     <section
-      id="About"
+      id="tentang"
       className="w-full px-6 py-20 lg:px-20"
     >
       <Title text="Tentang Kami" />
