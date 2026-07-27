@@ -5,6 +5,7 @@ import About from "@/components/about";
 import Galery from "@/components/Galery";
 import Process from "@/components/process";
 import Footer from "@/components/layout/Footer";
+import BacktoTop from "@/components/shared/BacktoTop";
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
 
       {/* Order Workflow / Process Section — lazy loaded */}
       <Process />
+
+      <BacktoTop />
 
       {/* Footer Layout — lazy loaded */}
       <Footer />

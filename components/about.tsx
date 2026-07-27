@@ -36,8 +36,8 @@ const About = () => {
         {/* Right */}
         <div className="flex flex-1 justify-center">
           <Image
-            src="/assets/images/gedung.jpeg"
-            alt="gedung"
+            src="/assets/images/taman.jpg"
+            alt="taman"
             width={550}
             height={200}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
