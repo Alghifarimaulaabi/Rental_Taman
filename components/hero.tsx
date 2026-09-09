@@ -94,9 +94,9 @@ const Hero = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
                 ))}
-                <span className="ml-1 font-bold text-emerald-950">4.9 / 5.0</span>
+                <span className="ml-1 font-bold text-emerald-950">5.0 / 5.0</span>
               </div>
-              <p className="text-[11px] text-emerald-900/70">Dipercaya 500+ Klien Event, Perusahaan, & Hunian</p>
+              <p className="text-[11px] text-emerald-900/70">Dipercaya 50+ Klien Event, Perusahaan, & Hunian</p>
             </div>
           </div>
         </div>

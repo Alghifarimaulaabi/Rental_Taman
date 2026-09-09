@@ -15,21 +15,15 @@ const About = () => {
         {/* Left */}
         <div className="flex-1 space-y-6">
           <h2 className="text-3xl font-bold">
-            Toko Sepatu Berkualitas
+            Aliza Garden & Decoration
           </h2>
 
           <p className="text-base sm:text-lg leading-relaxed text-emerald-900/70 max-w-2xl font-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem doloremque, ratione minima voluptas
-            repellendus cumque numquam officiis modi assumenda nemo
-            eligendi dicta voluptatum illum beatae aliquid dolores
-            nostrum tempore vitae.
+            Kami adalah penyedia layanan dekorasi tanaman hias indoor dan outdoor untuk berbagai kebutuhan, termasuk kantor, hotel, restoran, wedding, dan event-event lainnya. Dengan pengalaman bertahun-tahun, kami menghadirkan solusi dekorasi yang estetis dan fungsional, menciptakan suasana yang menyegarkan dan menenangkan bagi setiap ruang.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-emerald-900/70 max-w-2xl font-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Laboriosam magni dolorum voluptate quos molestias
-            consectetur, dolorem eveniet provident deleniti officiis.
+            Visi kami adalah menjadi mitra terpercaya dalam menghadirkan keindahan alam ke dalam setiap ruang, sementara misi kami adalah menyediakan layanan dekorasi tanaman yang inovatif, berkualitas tinggi, dan ramah lingkungan. Kami berkomitmen untuk memberikan pengalaman terbaik bagi klien kami melalui desain yang kreatif dan pelayanan yang profesional.
           </p>
         </div>
 
