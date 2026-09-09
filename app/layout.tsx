@@ -5,6 +5,8 @@ import "./globals.css";
 
 // Domain placeholder sesuai instruksi (dapat diubah via variabel lingkungan NEXT_PUBLIC_SITE_URL)
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-HWFDLB71HL";
 
 const playfair = Playfair_Display({
   variable: "--font-serif-display",
@@ -149,8 +151,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#F6F8F5] text-emerald-950 font-sans selection:bg-emerald-800 selection:text-emerald-50">
         {children}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        {gaMeasurementId && (
+          <GoogleAnalytics
+            gaId={gaMeasurementId}
+            debugMode={process.env.NODE_ENV === "development"}
+          />
         )}
       </body>
     </html>

@@ -15,7 +15,7 @@ const Title = ( {text} : ButtonProops ) => {
           width={230}
           height={55}
           priority
-          className="absolute object-contain"
+          className="absolute object-contain w-auto h-auto"
         />
 
         <h1 className="relative z-10 text-[28px] font-black tracking-wide text-white">

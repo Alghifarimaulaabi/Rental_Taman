@@ -11,7 +11,7 @@ import {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden px-4 py-8 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-center">
+    <section className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden px-4 py-8 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-center" id="top">
       {/* Background Decorative Ambient Blobs & Organic Shapes */}
       <div className="pointer-events-none absolute left-1/4 top-10 -z-10 h-96 w-96 rounded-full bg-emerald-300/20 blur-3xl animate-pulse-glow" />
       <div className="pointer-events-none absolute right-10 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-emerald-600/10 blur-[100px] animate-pulse-glow" />
